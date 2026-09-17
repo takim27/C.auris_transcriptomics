@@ -7,53 +7,37 @@ The analysis reuses 24 QuantSeq 3′ mRNA-sequencing libraries from NCBI BioProj
 ## Repository contents
 
 ```text
-candida-auris-pbmc-lncrna-analysis/
-│
+C.auris_transcriptomics/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
 │
-├── data/
-│   ├── sample_metadata.csv
-│   ├── raw_data_accessions.tsv
-│   ├── final_gene_counts.txt
-│   ├── final_gene_annotation.tsv
-│   └── processed/
-│
-├── scripts/
-│   ├── 01_download_and_qc/
-│   ├── 02_star_alignment/
-│   ├── 03_transcript_assembly/
-│   ├── 04_lncrna_filtering/
-│   ├── 05_featurecounts/
-│   ├── 06_differential_expression/
-│   ├── 07_coexpression/
-│   ├── 08_enrichment/
-│   └── 09_figures/
+├── docs/
+│   ├── detailed_method.md
+│   └── detailed_method.pdf
 │
 ├── environments/
-│   ├── auris.yml
-│   ├── auris_core_v2.yml
-│   └── auris_lnc_v2.yml
+│   └── Conda environment YAML files
 │
-├── annotations/
-│   ├── README.md
-│   └── final_combined_annotation.gtf
+├── scripts/
+│   └── Bash and SLURM scripts for sequence processing and lncRNA identification
 │
-├── results/
-│   ├── differential_expression/
-│   ├── coexpression/
-│   ├── enrichment/
-│   └── cytoscape/
-│
-├── figures/
-├── supplementary_files/
-│
-└── documentation/
-    ├── detailed_methods.md
-    ├── software_versions.txt
-    ├── contrast_definitions.md
-    └── sessionInfo.txt
+└── R/
+    ├── R_session_Info.txt
+    │
+    ├── expression_screening/
+    │   ├── expression_screen.R
+    │   ├── candidate_gene_ids.txt
+    │   ├── screening_gene_counts.txt.gz
+    │   └── sample_metadata.csv
+    │
+    └── differential_expression_and_downStream_analysis/
+        ├── differential_expression_and_downStream_analysis.R
+        ├── final_gene_annotation.tsv
+        ├── final_gene_counts.txt.gz
+        └── sample_metadata.csv
+
+
 ```
 
 The [detailed_methods.md](documentation/detailed_methods.md) describes the complete workflow from public FASTQ files through transcript discovery, candidate validation, expression analysis, functional analysis, cis-proximity screening, and network construction.
