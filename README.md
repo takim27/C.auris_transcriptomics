@@ -36,8 +36,6 @@ C.auris_transcriptomics/
         ├── final_gene_annotation.tsv
         ├── final_gene_counts.txt.gz
         └── sample_metadata.csv
-
-
 ```
 
 The [detailed_methods.md](documentation/detailed_methods.md) describes the complete workflow from public FASTQ files through transcript discovery, candidate validation, expression analysis, functional analysis, cis-proximity screening, and network construction.
