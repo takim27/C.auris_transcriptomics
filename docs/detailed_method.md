@@ -90,7 +90,7 @@ Then ran -
 ```bash
 dos2unix star_index.sh
 ```
-#converting file star_align.sh to Unix format or else it show error
+#converting file star_index.sh to Unix format or else it show error
 
 Submit to HPC terminal 
 ```bash
