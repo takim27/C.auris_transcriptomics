@@ -8,6 +8,7 @@ The analysis reuses 24 QuantSeq 3′ mRNA-sequencing libraries from NCBI BioProj
 
 ```text
 C.auris_transcriptomics/
+│
 ├── README.md
 ├── LICENSE
 ├── .gitignore
