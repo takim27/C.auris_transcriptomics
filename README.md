@@ -79,63 +79,70 @@ Two .R files in the [R/](R/) folders contain the expression screening analysis, 
 - Bioconductor or CRAN packages are listed in [R_session_Info.txt](R/R_session_Info.txt)
 - The main packages include edgeR, limma, ggplot2, UpSetR, pheatmap, ComplexHeatmap, clusterProfiler, org.Hs.eg.db, ReactomePA, enrichplot, igraph, and writexl.
 
-### Expression-support screen
+### Expression-support screening
 
-Inputs are already grouped under [`expression_screen/`](expression_screen/). The script applies the rule CPM ≥0.5 in at least two distinct donors within at least one identical stimulus-time group.
+The files required for expression-support screening are grouped under [`R/expression_screening/`](R/expression_screening/). The [`expression_screen.R`](R/expression_screening/expression_screen.R) script applies the criterion CPM ≥0.5 in at least two distinct donors within at least one identical stimulus–time group.
 
-Before running, change `base_dir` near the top of [`expression_screen.R`](expression_screen/expression_screen.R) to the local `expression_screen` directory. Then run:
+Before running the script, change `base_dir` near the beginning of the file to the local path of the `R/expression_screening/` directory. From the repository root, run:
 
 ```bash
-Rscript expression_screen/expression_screen.R
+Rscript R/expression_screening/expression_screen.R
 ```
 
-### Final statistical and functional analysis
+This directory contains:
 
-Inputs are under [`final_analysis/`](final_analysis/). Before running [`analysis_part_1.R`](final_analysis/analysis_part_1.R), replace its computer-specific `D:/a/final_analysis` paths with the local `final_analysis` directory. The script contains `View()` calls and is currently best run section by section in an interactive R session.
+* [`candidate_gene_ids.txt`](R/expression_screening/candidate_gene_ids.txt)
+* [`screening_gene_counts.txt.gz`](R/expression_screening/screening_gene_counts.txt.gz)
+* [`sample_metadata.csv`](R/expression_screening/sample_metadata.csv)
+* [`expression_screen.R`](R/expression_screening/expression_screen.R)
+
+### Differential-expression and downstream analyses
+
+The files required for the final statistical and functional analyses are grouped under [`R/differential_expression_and_downStream_analysis/`](R/differential_expression_and_downStream_analysis/).
+
+Before running [`differential_expression_and_downStream_analysis.R`](R/differential_expression_and_downStream_analysis/differential_expression_and_downStream_analysis.R), replace its computer-specific `D:/a/final_analysis` paths with the local path of the `R/differential_expression_and_downStream_analysis/` directory. 
+
+* [`differential_expression_and_downStream_analysis.R`](R/differential_expression_and_downStream_analysis/differential_expression_and_downStream_analysis.R)
+* [`final_gene_annotation.tsv`](R/differential_expression_and_downStream_analysis/final_gene_annotation.tsv)
+* [`final_gene_counts.txt.gz`](R/differential_expression_and_downStream_analysis/final_gene_counts.txt.gz)
+* [`sample_metadata.csv`](R/differential_expression_and_downStream_analysis/sample_metadata.csv)
 
 The principal statistical settings are:
 
-- `filterByExpr(dge, group=metadata$group)` using the edgeR defaults;
-- TMM normalization with `calcNormFactors()`;
-- donor-adjusted design `~0 + group + donor`;
-- robust dispersion estimation and quasi-likelihood fitting;
-- six stimulus-versus-time-matched-RPMI contrasts;
-- differential expression at FDR <0.05 and |log2 fold change| >1;
-- Pearson co-expression at |r| ≥0.70 and BH FDR <0.05;
-- stimulus-by-time interactions at FDR <0.05 and |interaction log2 fold change| >1;
-- cis proximity defined as ≤100 kb.
+* `filterByExpr(dge, group = metadata$group)` using the edgeR defaults;
+* TMM normalization using `calcNormFactors()`;
+* donor-adjusted design `~0 + group + donor`;
+* robust dispersion estimation and quasi-likelihood fitting;
+* six stimulus-versus-time-matched-RPMI contrasts;
+* differential expression at FDR <0.05 and |log2 fold change| >1;
+* Pearson co-expression at |r| ≥0.70 and BH FDR <0.05;
+* stimulus-by-time interactions at FDR <0.05 and |interaction log2 fold change| >1;
+* cis proximity defined as ≤100 kb.
+
+The R version and package information used for these analyses are provided in [`R/R_session_Info.txt`](R/R_session_Info.txt).
 
 ## Important distinction between the two count matrices
 
-`expression_screen/screening_gene_counts.txt` is a provisional featureCounts matrix generated from GENCODE Release 48 plus all 658 Pfam-pass candidate transcripts. It was used only to identify donor-supported candidate loci before IGV review.
+[`R/expression_screening/screening_gene_counts.txt.gz`](R/expression_screening/screening_gene_counts.txt.gz) is the provisional featureCounts matrix generated using GENCODE Release 48 together with all 658 Pfam-pass candidate transcripts. It was used only to identify donor-supported candidate loci before manual IGV review.
 
-`final_analysis/final_gene_counts.txt` is the final raw gene-level featureCounts matrix generated from GENCODE Release 48 plus the manually retained 608 transcripts representing 607 loci. It contains 79,293 feature rows before edgeR expression filtering. The 449 novel loci were obtained after `filterByExpr()`; they were not produced by differential-expression testing.
+[`R/differential_expression_and_downStream_analysis/final_gene_counts.txt.gz`](R/differential_expression_and_downStream_analysis/final_gene_counts.txt.gz) is the final raw gene-level featureCounts matrix generated using GENCODE Release 48 together with the manually retained 608 transcripts representing 607 loci. It contains 79,293 feature rows before edgeR expression filtering.
+
+The 449 expressed novel loci were retained after `filterByExpr()` and were not identified through differential-expression testing.
 
 ## Current reproducibility status
 
-The count matrices, metadata, final annotation table, R scripts, outputs, and detailed protocol are present. Before a public GitHub/Zenodo release, the following items should also be added:
+The repository currently contains:
 
-- path-independent shell scripts for FASTQ retrieval, trimming, alignment, assembly, candidate filtering, and featureCounts;
-- the Conda environment YAML files used for the core and lncRNA-specific tools;
-- an accession list and checksums for downloaded reference/input files;
-- a small configuration file defining project and reference paths;
-- a non-interactive version of the final R analysis with `View()` calls removed or guarded;
-- a license and a citation file.
+* the expression-screening R script and its required count matrix, candidate IDs, and sample metadata;
+* the differential-expression and downstream-analysis R script with its required final count matrix, annotation table, and sample metadata;
+* the R session information;
+* detailed documentation under [`docs/`](docs/);
+* computational-environment materials under [`environments/`](environments/);
+* sequence-processing and lncRNA-identification scripts under [`scripts/`](scripts/);
+* a repository [`LICENSE`](LICENSE).
 
-The existing scripts were originally written for a specific SLURM/HPC directory structure. Their scientific commands are documented in the detailed protocol, but the repository should not be described as one-command reproducible until those portability items are completed.
 
-## Data availability and archiving
-
-Raw sequencing data should not be duplicated in this repository; they are available from NCBI under PRJNA647871. Large derived files may be deposited in Zenodo or another stable repository and linked here. For manuscript submission, archive a tagged GitHub release in Zenodo and cite the resulting DOI so the exact code version remains accessible.
-
-## Citation
-
-If this workflow is used before the associated manuscript is published, cite the source RNA-seq study and this repository/Zenodo record. Replace this section with the final manuscript citation and repository DOI after acceptance or public archiving.
-
-## License
-
-No license has yet been specified. Add an appropriate open-source license before public release; without one, reuse rights remain restricted by default.
-
+The scripts were originally developed for specific Windows and SLURM/HPC directory structures. Although the scientific procedures are documented, the repository should not be described as fully one-command reproducible until the remaining absolute paths and interactive commands have been addressed.
 
 
 
