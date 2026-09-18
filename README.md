@@ -139,7 +139,6 @@ The repository currently contains:
 * detailed documentation under [`docs/`](docs/);
 * computational-environment materials under [`environments/`](environments/);
 * sequence-processing and lncRNA-identification scripts under [`scripts/`](scripts/);
-* a repository [`LICENSE`](LICENSE).
 
 
 The scripts were originally developed for specific Windows and SLURM/HPC directory structures. Although the scientific procedures are documented, the repository should not be described as fully one-command reproducible until the remaining absolute paths and interactive commands have been addressed.
