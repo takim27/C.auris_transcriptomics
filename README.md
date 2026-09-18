@@ -76,7 +76,7 @@ These values are validation checkpoints, not parameters to force. A different re
 ### Requirements
 
 - R 4.5.1 was used for the archived analysis.
-- Bioconductor/CRAN packages are listed in [R_session_Info.txt](R_session_Info.txt)
+- Bioconductor or CRAN packages are listed in [R_session_Info.txt](R/R_session_Info.txt)
 - The main packages include edgeR, limma, ggplot2, UpSetR, pheatmap, ComplexHeatmap, clusterProfiler, org.Hs.eg.db, ReactomePA, enrichplot, igraph, and writexl.
 
 ### Expression-support screen
