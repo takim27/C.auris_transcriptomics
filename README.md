@@ -72,7 +72,7 @@ These values are validation checkpoints, not parameters to force. A different re
 
 
 ## Reproducing the R analyses
-
+Two .R files in the [R/](R/) contain the expression screening analysis, differential expression analysis, UpSetR overlap, enrichment, co-expression, cis-proximity, and co-expression-based network analysis.
 ### Requirements
 
 - R 4.5.1 was used for the archived analysis.
