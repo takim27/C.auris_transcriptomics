@@ -71,13 +71,12 @@ The files in the [docs/](docs/) folder describe the complete workflow from publi
 These values are validation checkpoints, not parameters to force. A different reference release, software version, or downloaded dataset revision may change them.
 
 
-
 ## Reproducing the R analyses
 
 ### Requirements
 
 - R 4.5.1 was used for the archived analysis.
-- Bioconductor/CRAN packages are listed in [`final_analysis/R_session_Info.txt`](final_analysis/R_session_Info.txt).
+- Bioconductor/CRAN packages are listed in [`R_session_Info.txt`](`R_session_Info.txt`)
 - The main packages include edgeR, limma, ggplot2, UpSetR, pheatmap, ComplexHeatmap, clusterProfiler, org.Hs.eg.db, ReactomePA, enrichplot, igraph, and writexl.
 
 ### Expression-support screen
