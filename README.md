@@ -39,7 +39,7 @@ C.auris_transcriptomics/
         └── sample_metadata.csv
 ```
 
-The [detailed_methods.md](documentation/detailed_methods.md) describes the complete workflow from public FASTQ files through transcript discovery, candidate validation, expression analysis, functional analysis, cis-proximity screening, and network construction.
+The files in the [docs/](docs/) folder describe the complete workflow from public FASTQ files through transcript discovery, candidate validation, expression analysis, functional analysis, cis-proximity screening, and network construction.
 
 
 ## Analysis overview
