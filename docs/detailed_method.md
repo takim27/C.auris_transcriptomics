@@ -14,7 +14,7 @@ Release page: https://www.gencodegenes.org/human/release_48.html
 
 Link- https://www.ebi.ac.uk/ena/browser/view/PRJNA647871
 
-Used the wget code for the download: fastq_dnwd.sh (see  [`fastq_dnwd.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/fastq_dnwd.sh) )
+Used the wget code for the download: [`fastq_dnwd.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/fastq_dnwd.sh) 
 
 ## Step 3: Downloading the metadata 
 
@@ -85,7 +85,7 @@ We did it through a SLURM job on HPC (High-Performance Computing).
 ```bash
 mkdir -p STAR_index
 ```
-STAR Indexing script: star_index.sh [`star_index.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/star_index.sh)
+STAR Indexing script: [`star_index.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/star_index.sh)
 
 Then ran - 
 ```bash
@@ -122,7 +122,7 @@ multiqc . -o multiqc_raw
 
 ## Step 8: Trimming by cutadapt 
 
-Cutadapt script: cutadapt_quantseq.sh [`cutadapt_quantseq.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/cutadapt_quantseq.sh)
+Cutadapt script: [`cutadapt_quantseq.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/cutadapt_quantseq.sh)
 ```bash
 sbatch cutadapt_quantseq.sh
 ```
@@ -140,7 +140,7 @@ The final report will be delivered like multiqc.html
 conda activate auris_core_v2
 mkdir -p /project/bishalab/msarker/c.auris_new/STAR_alignment
 ```
-Created the STAR_alignment.sh [`STAR_alignment.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/STAR_alignment.sh)
+Created  [`STAR_alignment.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/STAR_alignment.sh)
 ```bash
 dos2unix STAR_alignment.sh
 sbatch STAR_alignment.sh
@@ -168,7 +168,7 @@ awk 'NR>4 {u+=$2; f+=$3; r+=$4} END {print "Unstranded:",u,"Forward:",f,"Reverse
 ```
 ## Step 12: index the BAM files
 
-Made the file- bam_index.sh [`bam_index.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/bam_index.sh)
+Made the file  [`bam_index.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/bam_index.sh)
 ```bash
 dos2unix bam_index.sh
 sbatch bam_index.sh
@@ -183,7 +183,7 @@ Expected: 24.
 ```bash
 mkdir -p /project/bishalab/msarker/c.auris_new/stringtie_assembly/{gtf,abundance,logs}
 ```
-Created stringtie_assembly.sh [`stringtie_assembly.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/stringtie_assembly.sh)
+Created [`stringtie_assembly.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/stringtie_assembly.sh)
 ```bash
 dos2unix stringtie_assembly.sh
 sbatch stringtie_assembly.sh
@@ -222,7 +222,7 @@ Created the output directory:
 ```bash
 mkdir -p /project/bishalab/msarker/c.auris_new/gffcompare
 ```
-Created gffcompare.sh [`gffcompare.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/gffcompare.sh)
+Created [`gffcompare.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/gffcompare.sh)
 
 Submitted to slurm: 
 ```bash
@@ -517,7 +517,7 @@ Index the database once
 ```bash
 cmpress /project/bishalab/msarker/c.auris_new/lncrna_filtering/04_rfam/database/Rfam.cm
 ```
-Created rfam_scan.sh [`rfam_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/rfam_scan.sh)
+Created [`rfam_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/rfam_scan.sh)
 ```bash
 dos2unix rfam_scan.sh
 sbatch rfam_scan.sh
@@ -573,7 +573,7 @@ Created directories:
 ```bash
 mkdir -p /project/bishalab/msarker/c.auris_new/lncrna_filtering/05_cpc2/{results,logs}
 ```
-Created cpc2_scan.sh [`cpc2_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/cpc2_scan.sh)
+Created [`cpc2_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/cpc2_scan.sh)
 Submit:
 ```bash
 dos2unix cpc2_scan.sh
@@ -661,7 +661,7 @@ Download the current Pfam-A database (release 38.2):
 ```bash
 wget -c https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz -O /project/bishalab/msarker/c.auris_new/lncrna_filtering/06_pfam/database/Pfam-A.hmm.gz
 ```
-Create pfam_scan.sh [`pfam_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/pfam_scan.sh)
+Create [`pfam_scan.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/pfam_scan.sh)
 Submit it:
 ```bash
 dos2unix pfam_scan.sh
@@ -782,7 +782,7 @@ Created the provisional counting annotation containing full GENCODE plus all 658
 ```bash
 cat /project/bishalab/msarker/c.auris_new/gencode.v48.annotation.gtf /project/bishalab/msarker/c.auris_new/lncrna_filtering/06_pfam/results/primary_ux_pfam_pass.gtf > /project/bishalab/msarker/c.auris_new/lncrna_filtering/08_expression_screen/provisional_annotation_658.gtf
 ```
-Create screening_featurecounts.sh [`screening_featurecounts.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/screening_featurecounts.sh)
+Create [`screening_featurecounts.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/screening_featurecounts.sh)
 
 Submit:
 ```bash
@@ -967,7 +967,7 @@ Create the output and log directories:
 ```bash
 mkdir -p /project/bishalab/msarker/c.auris_new/lncrna_filtering/07_genomic_context/igv_bams/logs
 ```
-Created igv_subset.sh [`igv_subset.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/igv_subset.sh)
+Created [`igv_subset.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/igv_subset.sh)
 
 Submit it:
 ```bash
@@ -1062,7 +1062,7 @@ First create the output directory:
 ```nash
 mkdir -p /project/bishalab/msarker/c.auris_new/lncrna_filtering/09_final_catalog/final_counts
 ```
-Create final_featurecounts.sh [`final_featurecounts.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/final_featurecounts.sh)
+Create [`final_featurecounts.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/final_featurecounts.sh)
 ```bash
 dos2unix final_featurecounts.sh
 sbatch final_featurecounts.sh
