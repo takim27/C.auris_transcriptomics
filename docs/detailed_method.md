@@ -122,7 +122,7 @@ multiqc . -o multiqc_raw
 
 ## Step 8: Trimming by cutadapt 
 
-Cutadapt script: cutadapt_quantseq.sh (provided in the scripts/ folder)
+Cutadapt script: cutadapt_quantseq.sh [`cutadapt_quantseq.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/cutadapt_quantseq.sh)
 ```bash
 sbatch cutadapt_quantseq.sh
 ```
