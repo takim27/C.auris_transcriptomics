@@ -967,7 +967,7 @@ Create the output and log directories:
 ```bash
 mkdir -p /project/bishalab/msarker/c.auris_new/lncrna_filtering/07_genomic_context/igv_bams/logs
 ```
-Created igv_subset.sh (provided in the scripts/ folder)
+Created igv_subset.sh [`igv_subset.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/igv_subset.sh)
 
 Submit it:
 ```bash
