@@ -13,7 +13,8 @@ Release page: https://www.gencodegenes.org/human/release_48.html
 ## Step 2: Downloading the FastQ files 
 
 Link- https://www.ebi.ac.uk/ena/browser/view/PRJNA647871
-Used the wget code for the download: fastq_dnwd.sh 
+
+Used the wget code for the download: fastq_dnwd.sh (provided in the scripts/ folder)
 
 ## Step 3: Downloading the metadata 
 
