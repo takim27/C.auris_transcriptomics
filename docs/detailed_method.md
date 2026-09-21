@@ -85,7 +85,7 @@ We did it through a SLURM job on HPC (High-Performance Computing).
 ```bash
 mkdir -p STAR_index
 ```
-STAR Indexing script: star_index.sh (provided in the scripts/ folder)
+STAR Indexing script: star_index.sh [`star_index.sh`](https://github.com/takim27/C.auris_transcriptomics/blob/main/scripts/star_index.sh)
 
 Then ran - 
 ```bash
